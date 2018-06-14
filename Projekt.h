@@ -25,6 +25,7 @@ namespace Project5 {
 	};
 
 	circle C1, C2, C3, C4, R;
+	bool C1_catch, C2_catch, C3_catch, C4_catch;
 	
 	/// <summary>
 	/// Summary for MyForm
@@ -171,8 +172,9 @@ namespace Project5 {
 			this->KeyPreview = true;
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MyForm";
-			this->Text = L"DŸwig";
+			this->Text = L"DÅ¸wig";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyDown);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -208,6 +210,95 @@ private: System::Void pictureBox1_Paint(System::Object^  sender, System::Windows
 	g->DrawEllipse(System::Drawing::Pens::Red, C3.x, C3.y, C3.height, C3.width);
 	g->DrawEllipse(System::Drawing::Pens::Red, C4.x, C4.y, C4.height, C4.width);
 	g->DrawRectangle(System::Drawing::Pens::Blue, R.x ,R.y, R.height, R.width);
+	
+}
+private:
+	System::Void MyForm_KeyDown(System::Object^  sender, System::Windows::Forms::KeyEventArgs^  e) {
+	if (e->KeyCode == Keys::S)
+	{
+		if (position.Y < 300) {
+			position.Y += 2;
+			if (C1_catch == true) {
+				C1.y += 2;
+			}
+			else if (C2_catch == true) {
+				C2.y += 2;
+			}
+			else if (C3_catch == true) {
+				C3.y += 2;
+			}
+			else if (C4_catch == true) {
+				C4.y += 2;
+			}
+			malowac = true;
+			this->Refresh();
+		}
+	}
+
+	if (e->KeyCode == Keys::W)
+	{
+		if (position.Y > 100) {
+			position.Y -= 2;
+			if (C1_catch == true) {
+				C1.y -= 2;
+			}
+			else if (C2_catch == true) {
+				C2.y -= 2;
+			}
+			else if (C3_catch == true) {
+				C3.y -= 2;
+			}
+			else if (C4_catch == true) {
+				C4.y -= 2;
+			}
+			malowac = true;
+			this->Refresh();
+		}
+	}
+
+	if (e->KeyCode == Keys::D)
+	{
+		if (position.X < 550) {
+			position.X += 2;
+			crane.X += 2;
+			if (C1_catch == true) {
+				C1.x += 2;
+			}
+			else if (C2_catch == true) {
+				C2.x += 2;
+			}
+			else if (C3_catch == true) {
+				C3.x += 2;
+			}
+			else if (C4_catch == true) {
+				C4.x += 2;
+			}
+			malowac = true;
+			this->Refresh();
+		}
+	}
+
+	if (e->KeyCode == Keys::A)
+	{
+		if (position.X > 50) {
+			position.X -= 2;
+			crane.X -= 2;
+			if (C1_catch == true) {
+				C1.x -= 2;
+			}
+			else if (C2_catch == true) {
+				C2.x -= 2;
+			}
+			else if (C3_catch == true) {
+				C3.x -= 2;
+			}
+			else if (C4_catch == true) {
+				C4.x -= 2;
+			}
+			malowac = true;
+			this->Refresh();
+		}
+	}
 	
 }
 };
